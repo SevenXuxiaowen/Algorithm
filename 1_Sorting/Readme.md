@@ -44,9 +44,9 @@ public class SelfDefineClass implements Comparable<Item>{
 }
 ```
 ## Selection Sort
-Iterite array, for each iteration a[i], find the min element in the right entries of a[i]. Then, exchage a[i] and a[min].
+Iterate array, for each iteration a[i], find the min element in the right entries of a[i]. Then, exchage a[i] and a[min].
 ```java
-publich static void sort(Comparable[] a){
+public static void sort(Comparable[] a){
     int N = a.length;
     for(int i = 0; i < N; i++){
         int min = i;
@@ -57,8 +57,19 @@ publich static void sort(Comparable[] a){
     }
 }
 ```
-
 ## Insertion Sort
+Iterate array, for every iteration a[i], compare itself to its every left entry. When it meete element that bigger that it, exchange them, untill it meets the first elemen that "smaller" that it.
+```java
+public static void sort(Comparable[] a){
+    int N = a.length;
+    for(int i = 0; i < N; i++){
+        for(int j = i; j > 0; j--){
+            if(less(a[j], a[j-1])) exch(a, j, j-1)
+            else break;
+        }
+    }
+}
+```
 ## Merge Sort (recursion)
 ## Merge Sort (bottom-up)
 ## Quick Sort
