@@ -176,3 +176,23 @@ public class SelfDefineClass{
     }
 }
 ```
+## Quick-select
+#### Problem description
+Given an array of N items, find a Kth smallest item.
+#### Solution
+Entry[j] is inplace. no larger entry to the left of a[j], no smaller entry to the right of a[j]. Implementation:
+1. Recursively partrition, until the return number k of partrition equals j.
+2. If k < j, partrition lo = k + 1; If k > j. partrition hi  = j - 1.
+```java
+public static Comparable quickSelect(Comparable[] a, int k){
+    knuthShuffle(a);
+    int lo = 0, hi = a.lenth - 1;
+    while(lo < hi){
+        int j = partrition(a, lo, hi);
+        if (j < k) lo = j + 1;
+        else if (j > k) hi = j - 1;
+        else return a[k];
+    }
+    return a[k];
+}
+```
