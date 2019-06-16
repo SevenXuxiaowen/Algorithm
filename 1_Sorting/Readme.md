@@ -1,4 +1,3 @@
-
 # Sorting
 ## Sort API
 The ```interface``` in java is like the callback function in Javascript, a reference to exacutable code.
