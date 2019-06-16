@@ -36,6 +36,7 @@ public class SelfDefineClass implements Comparable<Item>{
 		return true;
 	}
 
+
 	//Different sortings
 	public static void sort(Comparable[] a){
 		//TODO:SORTING ALGORITHM
