@@ -2,13 +2,13 @@
 # Sorting
 ## Sort API
 The ```interface``` in java is like the callback function in Javascript, a reference to exacutable code.
-### Comparable interface (build-in Java interface)
+#### Comparable interface (build-in Java interface)
 ```java
 public interface Comparable<Item>{ 
     public int compareTo(Item that); 
 }
 ```
-### Build a class that implements Comparable interface
+#### Build a class that implements Comparable interface
 ```java
 public class SelfDefineClass implements Comparable<Item>{
     /** initialize */
@@ -71,5 +71,35 @@ public static void sort(Comparable[] a){
 }
 ```
 ## Merge Sort (recursion)
+1. Divid a array to 2 part in the middle. We assume that partrition A and partrition B has been sorted, so after merging the 2 array, the whole array is sorted;
+2. Sort the 2 parts in a recurtion way.
+```java
+private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi){
+    //Step 1: Copy elements of a into aux
+    for(int k = lo; k <= hi; k++){
+        aux[k] = a[k];
+    }
+    //Step 2: merge
+    int i = lo, j = mid + 1;
+    for(int k = lo; k <= hi; k++){
+        if(i > mid)              a[k] = aux[j++];
+        if(j > hi)               a[k] = aux[i++];
+        if(less(aux[j], aux[i])) a[k] = aux[j++];
+        else                     a[k] = aux[i++];
+    }
+}
+private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi){
+    if(lo <= hi) return;
+    int mid = lo + (hi - lo) / 2;
+    sort(a, aux, lo, mid);
+    sort(a, aux, mid + 1, hi)
+    if(!less(a[mid + 1], a[mid]) return;
+    merge(a, aux, lo, mid, hi);
+}
+public static void sort(Comparable[] a){
+    Comparable[] aux = new Comparable[a.length];
+    sort(a, aux, 0, a.length - 1);
+}
+```
 ## Merge Sort (bottom-up)
 ## Quick Sort
