@@ -23,7 +23,9 @@ public class SelfDefineClass implements Comparable<Item>{
     }
 
     //Helper functions
-    private static boolean less(Comparable v, Comparable w){ return v.compareTo(w) < 0; }
+    private static boolean less(Comparable v, Comparable w){ 
+        return v.compareTo(w) < 0; 
+    }
 
     private static void exch(Comparable[] a, int i, int j){
         Compareble temp = a[i];
@@ -32,7 +34,9 @@ public class SelfDefineClass implements Comparable<Item>{
     }
 
     private static boolean isSorted(Comparable[] a){
-        for (int i = 1; i < a.length; i++){ if(less(comparable[i], comparable[i - 1])) return false; }
+        for (int i = 1; i < a.length; i++){ 
+            if(less(comparable[i], comparable[i - 1])) return false; 
+        }
         return true;
     }
 
@@ -126,3 +130,50 @@ public static void sort(Comparable[] a){
 }
 ```
 ## Quick Sort
+1. Shuffle the array;
+2. Partrition for a[j], elements on its left is no larger than a[j], elements on its right is no smaller that a[j];
+3. Sort the 2 sides of the partrition recursively.
+```java
+private static int partrition(Comparable[] a, int lo, int hi){
+    int i = lo, j = hi + 1;
+    while(true) {
+        while(less(a[++i], a[lo]){
+            if(i == hi) break;
+        }
+        while(less(a[lo], a[--j]){
+            if(j == lo) break;
+        }
+        if(i >= j) break;
+        exch(a, i, j);
+    }
+    exch(a, lo, j);
+    return j;
+}
+
+private static void sort(Comparable[] a, int lo, int hi){
+    if(hi <= lo) return;
+    int j = paetrition(a, lo, hi);
+    sort(a, lo, j - 1);
+    sort(a, j + 1, hi);
+}
+
+public static void sort(Comparable[] a){
+    knuthShuffle(a);
+    sort(a, 0, a.lenth - 1);
+}
+
+```
+## Knuth Shuffle Demo
+1. In iteration i, pick integer r between [0, i] uniformly at random;
+2. Swape a[i] and a[r].
+```java
+public class SelfDefineClass{
+    public static void knuthShuffle(Object[] a){
+        int N = a.length;
+        for(int i = 0; i < N; i++){
+            int r = Math.randomNumber(0, i + 1) //Generate a random integer within [0, i]
+            exch(a, i, r);
+        }
+    }
+}
+```
