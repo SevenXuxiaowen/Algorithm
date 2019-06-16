@@ -82,10 +82,10 @@ private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int
     //Step 2: merge
     int i = lo, j = mid + 1;
     for(int k = lo; k <= hi; k++){
-        if(i > mid)              a[k] = aux[j++];
-        if(j > hi)               a[k] = aux[i++];
-        if(less(aux[j], aux[i])) a[k] = aux[j++];
-        else                     a[k] = aux[i++];
+        if(i > mid)                   a[k] = aux[j++];
+        else if(j > hi)               a[k] = aux[i++];
+        else if(less(aux[j], aux[i])) a[k] = aux[j++];
+        else                          a[k] = aux[i++];
     }
 }
 private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi){
@@ -102,4 +102,27 @@ public static void sort(Comparable[] a){
 }
 ```
 ## Merge Sort (bottom-up)
+```Java
+private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi){
+    for(int k = lo; k <= hi; k++){
+        aux[k] = a[k];
+    }
+    int i = lo, j = mid + 1;
+    for(int k = lo; k <= hi; k++){
+        if(i > mid)                   a[k] = aux[j++];
+        else if(j > hi)               a[k] = aux[i++];
+        else if(less(aux[i], aux[j])) a[k] = aux[i++];
+        else                          a[k] = aux[j++];
+    }
+}
+public static void sort(Comparable[] a){
+    int N = a.length;
+    Comparable[] aux = new Comparable[N];
+    for(int sz = 1; sz < N; sz *= 2){
+        for(int lo = 0; lo < N - sz; lo = lo + 2 * sz){
+            merge(a, aux, lo, lo + sz - 1, Math.min(lo + s * sz - 1, N - 1));
+        }
+    }
+}
+```
 ## Quick Sort
