@@ -196,3 +196,29 @@ public static Comparable quickSelect(Comparable[] a, int k){
     return a[k];
 }
 ```
+## Dijkstra 3-way partitioning
+When there are significant number of dupliment elements in the array. Implementation:
+1. v is partitioning item a[lo]
+2. Iterate i from left to right:
+    if (a[i] < v) throw a[i] to the left of i (exch a[lt] with a[i], increment lt and i);
+    if (a[i] > v) throw a[i] to the rigght of i (axch a[ht] with a[i], decrement lo);
+    if (a[i] = v) increment i
+3. Recursively partrition lo -> lt, and ht -> hi.
+```java
+public static void sort(Comparable[] a, lo, hi){
+    // Step 1, partitioning
+    if(hi <= lo) return;
+    int lt = lo, ht = hi;
+    Comparable v = a[lo];
+    int i = lo;
+    while(i < gt){
+        int cmp = a[i].compareTo(v);
+        if(cmp < 0) exch(a, lt++, i++);
+        else if(cmo > 0) exch(a, i, ht--);
+        else i++;
+    }
+    // Step 2, recursion
+    sort(a, lo, lt - 1);
+    sort(a, ht + 1, hi);
+}
+```
