@@ -1,5 +1,14 @@
 # Sorting
-[create an anchor](#sort-api)
+* [Sort API](#sort-api)
+* [Selection Sort](#selection-sort)
+* [Insertion Sort](#insertion-sort)
+* [Merge Sort (recursion)](#merge-sort-recursion)
+* [Merge Sort (bottom-up)](#merge-sort-bottom-up)
+* [Quick Sort](#quick-sort)
+* [Knuth Shuffle demo](#knuth-shuffle-demo)
+* [Quick-select](#quick-select)
+* [Dijkstra 3-way partitioning](#dijkstra-3-way-partitioning)
+
 ## Sort API
 The ```interface``` in java is like the callback function in Javascript, a reference to exacutable code.
 #### Comparable interface (build-in Java interface)
