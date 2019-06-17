@@ -116,7 +116,8 @@ public static void sort(Comparable[] a){
 }
 ```
 ## Merge Sort (bottom-up)
-```Java
+No recursive solution
+```java
 private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi){
     for(int k = lo; k <= hi; k++){
         aux[k] = a[k];
@@ -171,11 +172,11 @@ public static void sort(Comparable[] a){
     knuthShuffle(a);
     sort(a, 0, a.lenth - 1);
 }
-
 ```
 ## Knuth Shuffle Demo
 1. In iteration i, pick integer r between [0, i] uniformly at random;
 2. Swape a[i] and a[r].
+
 ```java
 public class SelfDefineClass{
     public static void knuthShuffle(Object[] a){
