@@ -8,6 +8,7 @@
 * [Knuth Shuffle demo](#knuth-shuffle-demo)
 * [Quick-select](#quick-select)
 * [Dijkstra 3-way partitioning](#dijkstra-3-way-partitioning)
+* [Summary](#summary)
 
 ## Sort API
 The ```interface``` in java is like the callback function in Javascript, a reference to exacutable code.
@@ -232,3 +233,12 @@ public static void sort(Comparable[] a, lo, hi){
     sort(a, ht + 1, hi);
 }
 ```
+## Summary
+| Sort       | Inplace | Stable | worst | average | best  | remarks |
+|:-----------|:-------:|:------:|:-----:|:-------:|:-----:|:--------|
+|Selection   | y       |        | N^2/2 |  N^2/2  | N^2/2 | N exchanges |
+|Insertion   | y       | y      | N^2/2 |  N^2/4  | N     | Use for small N or partially ordered |
+|Merge       |         | y      | NlgN  |  NlgN   | NlgN  | NlogN gurantee, stable, for Java primarive data type sort |
+|Quick       | y       |        | N^2/2 |  2NlnN  | NlgN  |    |
+|3-way quick | y       |        | N^2/2 |  2NlnN  | N     | for duplicate elements, improve quick-sort |
+
