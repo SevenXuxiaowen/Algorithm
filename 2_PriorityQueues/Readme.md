@@ -15,8 +15,10 @@ public class MaxPQ<key extends Comparable<key>>{
 ```
 #### Application 
 Find the largest M items in a stream of N items.
-| Implementation | Times | Space |
-|:---------------|:-----:|:-----:|
-|Sort            | NlgN  |NlgN   |
-|elementry PQ    | MN    |M      |
-|binary heap     | NlogM |M      |
+
+| Implementation | Times   | Space |
+|:---------------|:-------:|:-----:|
+|Sort            | NlgN    | NlgN  |
+|elementry PQ    | MN      | M     | 
+|binary heap     | NlogM   | M     | 
+
