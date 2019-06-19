@@ -148,8 +148,13 @@ public class Heap{
     }
 }
 ```
-
-
+#### Comparation of different sorting methods
+1. Selection Sort - O(N^2)
+2. Insertion Sort - O(N^2)
+3. Quick Sort - O(NlnN)
+4. 3-way Quick Sort - O(NlnN)
+5. Merge Sort - O(NlgN) stable and NlgN gurantee
+6. Heap Sort - O(NlgN) inplace and NlgN gurantee
 
 
 
