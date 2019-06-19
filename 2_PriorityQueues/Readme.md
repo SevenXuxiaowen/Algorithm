@@ -1,4 +1,5 @@
 # Priority Queues
+* [PQ API](#pq-api)
 ## PQ API
 #### API Requirement
 key must be comparable
