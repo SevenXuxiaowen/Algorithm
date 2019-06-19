@@ -94,7 +94,60 @@ public Key delMax(){
     return max;
 }
 ```
-
+## Heap Sort
+#### Method
+1. Heap Construction: Build a max binary heap using a bottom-up method.(也就是说从k=N/2开始一个一个往上遍历直到k=1)
+```java
+for(int k = N/2; k >= 1; k--){
+    sink(a, k, N);
+}
+```
+2. Sortdown: Repeatedly delete the largest remaining item.
+- Remove the maximum, one at a time.(including change the root with tail, sink the exchanged root)
+- Leave in array, instead of nulling out.
+```java
+while(N > 1){
+    exch(a, 1, N--);
+    sink(a, 1, N);
+}
+```
+#### Heap Sort (Java implementation)
+```java
+public class Heap{
+    public static void sort(Comparable[] a){
+        int N = a.length;
+        //Step 1: Heap construction
+        for(int k = N / 2; k >= 1; k--){
+            sink(a, k, N);
+        }
+        //Step 2: Sort down
+        while(N > 1){
+            exch(a, 1, N--);
+            sink(a, 1, N);
+        }
+    }
+    
+    private static void sink(Comparable[] a, int k, int N){
+        while( 2 * k < N){
+            int j = 2 * k;
+            if(j < N && less(j, j + 1)) j++;
+            if(less(a, j, k) break;
+            exch(a, k, j);
+            k = j;
+        }
+    }
+    
+    private static void less(Comparable[] a, int i, int j){
+        return a[i].compareTo(a[j]) < 0;
+    }
+    
+    private static void exch(Comparable[] a, int i, int j){
+        Comparable temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+}
+```
 
 
 
