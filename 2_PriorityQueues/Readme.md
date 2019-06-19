@@ -1,5 +1,9 @@
 # Priority Queues
 * [PQ API](#pq-api)
+* [Elementry PQ](#elementry-pq)
+* [Binary Heaps](#binary-heaps)
+* [Heap Sort](#heap-sort)
+* [Comparation of different sorting methods](#comparation-of-different-sorting-methods)
 ## PQ API
 #### API Requirement
 key must be comparable
@@ -149,7 +153,7 @@ public class Heap{
     }
 }
 ```
-#### Comparation of different sorting methods
+## Comparation of different sorting methods
 1. Selection Sort - O(N^2)
 2. Insertion Sort - O(N^2)
 3. Quick Sort - O(NlnN)
