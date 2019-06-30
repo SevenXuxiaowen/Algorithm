@@ -13,7 +13,11 @@ public class ST<Key, Value>{
     Iterable<Key> keys()
 }
 ```
-## Implement equals for user defined class
+## Implement equals() for 2 key
+1. Optimization for reference equality;
+2. Check against null
+3. Check that 2 objects are the same type and cast
+4. Compare each significant feild.
 ```java
 public final class UserDefined implement Comparable<UserDefined> {
     // ... constructure and others
