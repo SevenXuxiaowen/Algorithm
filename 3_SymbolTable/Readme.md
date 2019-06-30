@@ -28,7 +28,8 @@ public final class UserDefined implement Comparable<UserDefined> {
         // 3. Check if the object is null
         if (that == null) return false;
         // 4. Check if the value is same
-        // ...
+        UserDefined y = (UserDefined) that;
+        ...
         return true
     }
 }
