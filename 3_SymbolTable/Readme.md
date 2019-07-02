@@ -13,7 +13,7 @@ public class ST<Key, Value>{
     Iterable<Key> keys()
 }
 ```
-## Implement equals() for 2 key
+#### Implement equals() for 2 key
 1. Optimization for reference equality;
 2. Check against null
 3. Check that 2 objects are the same type and cast
@@ -38,3 +38,45 @@ public final class UserDefined implement Comparable<UserDefined> {
     }
 }
 ```
+## Elementary implementations 
+1. Sequential search in a linked list
+Search - O(N), Insert - O(N), not ordered iteration.
+2. Binary search in an ordered array
+Search - O(lnN), Insert - O(N), ordered iteration.
+```java
+public Value get(Key key){
+    if(isEmpty) return null;
+    int i = rank(key);
+    if(i < N && keys[i].compareTo(key) == 0) return vals[i];
+    else return null;
+}
+
+private int rank(Key key){
+    int lo = 0, hi = N-1;
+    while(lo < hi){
+        int mid = lo + (hi - lo) / 2;
+        int cmp = key.compareTo(keys[mid]);
+        if      (cmp > 0)  lo = mid + 1;
+        else if (cmp < 0)  hi = mid - 1;
+        else    (cmp == 0) return mid;
+    }
+    return null;
+}
+```
+#### Comparation
+| Implementations   | search | insert/delete | min/max | floor/ceiling | rank | select | ordered iteration |
+| ----------------- |:------:| :------------:|:-------:|:-------------:|:----:|:------:|:-----------------:|
+| Sequential search |N       | N             |N        |N              |N     |N       |NlgN               |
+| Binary search     |lgN     | N             |1        |lgN            |lgN   |1       |N                  |
+
+
+
+
+
+
+
+
+
+
+
+
