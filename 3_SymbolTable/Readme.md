@@ -185,10 +185,51 @@ private void inorder(Node x, Quere<Key> q){
 	inorder(x.right, q);
 }
 ```
-
-
-
-
+## BST Deletion
+#### Deleting the minimum
+1. Go left untill find a node witl null left link
+2. Replace the node with its right link
+3. Update subtree count
+```java
+private void deleteMin(){
+	root = deleteMin(root);
+}
+private Node deleteMin(Node x){
+	if(x.left == null) return x.right;
+	x.left = deleteMin(x.left);
+	x.count = 1 + size(x.left) + size(x.right);
+	return x;
+}
+```
+#### Hibbard deletion
+1. Search for the Node t containing Key key;
+2. Different conditions with key:
+- (key has 0 child) delete key by setting its parent to null
+- (key has 1 child) delete key by link its child to its parent
+- (key has 2 child) delete key by exchange itself with its right subtree's minimum
+```java
+public void delete(Key key){
+	root = delete(root, key);
+}
+private Node delete(Node x, Key key){
+	if(x == null) return null;
+	int cmp = key.compareTo(x.key);
+	if(cmp < 0) x.left = delete(x.left, key);
+	else if(cmp > 0) x.right = delete(x.right, key);
+	else{
+		if(root.right == null) return root.left;
+		if(root.left == null) return root.right;
+		
+		Node t = x;
+		x = min(t.right);
+		x.right = deleteMin(t.right);
+		x.left = t.left;
+	}
+	x.count = size(x.left) + size(x.right) + 1;
+	return x;
+}
+```
+O(h) (h = N^0.5)
 
 
 
