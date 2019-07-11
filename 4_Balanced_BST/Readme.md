@@ -23,7 +23,6 @@
 - Average-case (after N insert): search - ```1.39lgN```, insert - ```1.39lgN```
 - Odered iteration: YES
 - Key interface: ```compareTo()```
-
 ## 2-3 Tree
 Guaranteed logarithmic performance for search and insert.
 1. Symmetric order: Inorder traversal yeilds keys in ascending order.
@@ -43,5 +42,32 @@ Same as BST, if meet 3 node, less go left, greater go right, interval go middle
 - Average-case-cost: search - ```clgN```, insert - ```clgN```, delete - ```clgN```
 - Odered iteration: YES
 - Key interface: ```compareTo()```
+## Red-black BSTs
+#### Defination: Left Leaning Red-black BSTs
+Represent 2-3 trees as BST by using 'internal' left-leaning links as 'glue' for 3 nodes.
+- No node has 2 red links connected to it.
+- Every path from root to null has the same number of black links.
+- Red links lean left.
+#### Representation
+Compared with BST node, the left leaning red-black BSTs node has one boolean color feilds, refering to the color of its parent link.
+```java
+publich class LLRB{
+    private static final boolean RED = true;
+    private static final boolean BLACK = false;
+    private class Node{
+        Key key;
+        Value val;
+        Node left, right;
+        boolean color;
+    }
+    private boolean isRed(Node x){
+        if(x == null) return false; //null links are BLACK
+        return x.color == RED;
+    }
+}
+```
+
+
+
 
 
