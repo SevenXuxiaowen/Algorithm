@@ -96,8 +96,27 @@ private void flipColors{
     h.right.color = BLACK;
 }
 ```
-
-
-
-
-
+#### Insertion
+- Right child RED, left child black, `rotate left`
+- Left child & left-left grandchild red, `roate right`
+- Both children red, `flip color`
+```java
+private Node put(Node h, Key key, Value val){
+    if(h == null) return new Node(key, val, RED);
+    int cmp = key.compareTo(h.key);
+    if(cmp > 0) h.right = put(h.right, key, val);
+    else if (cmp < 0) h.left = put(h.left, key, val);
+    else h.val = val;
+    
+    if(isRed(h.right) && !isRed(h.left)) h = rotateLeft(h);
+    if(isRed(h.left) && isRed(h.left.left)) h = rotateRight(h);
+    if(isRed(h.left) && isRed(h.right)) flipColors(h);
+    
+    return h;
+}
+```
+#### Comlicity
+- Worst-case-cost: search - ```2lgN```, insert - ```2lgN```, delete - ```2lgN```
+- Average-case-cost: search - ```1.00lgN*```, insert - ```1.00lgN*```, delete - ```1.00lgN*```
+- Odered iteration: YES
+- Key interface: ```compareTo()```
