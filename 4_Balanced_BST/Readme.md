@@ -48,7 +48,7 @@ Represent 2-3 trees as BST by using 'internal' left-leaning links as 'glue' for 
 - No node has 2 red links connected to it.
 - Every path from root to null has the same number of black links.
 - Red links lean left.
-#### Representation
+#### Construction
 Compared with BST node, the left leaning red-black BSTs node has one boolean color feilds, refering to the color of its parent link.
 ```java
 publich class LLRB{
@@ -64,6 +64,36 @@ publich class LLRB{
         if(x == null) return false; //null links are BLACK
         return x.color == RED;
     }
+}
+```
+#### Left rotation
+```java
+private Node rotateLeft(Node h){
+    Node x = h.right;
+    h.right = x.left;
+    x.left = h;
+    x.color = h.color;
+    h.color = RED;
+    return x;
+}
+```
+#### Right rotation
+```java
+private Node rotateRight(Node h){
+    Node x = h.left;
+    h.left = x.right;
+    x.right = h;
+    x.color = h.color;
+    h.color = RED;
+    return x;
+}
+```
+#### Color flip
+```java
+private void flipColors{
+    h.color = RED;
+    h.left.color = BLACK;
+    h.right.color = BLACK;
 }
 ```
 
