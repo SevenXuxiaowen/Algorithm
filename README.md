@@ -6,5 +6,6 @@
 #### 06/29/2019 Algorithm I Week 4 (Lecture)
 #### 06/30/2019 Algorithm I Week 4 (Lecture)
 #### 07/01/2019 Algorithm I Week 4 (Review)
-#### 07/02/2019 Algorithm I Week 5 (Review)
+#### 07/02/2019 Algorithm I Week 4 (Review)
+#### 07/06/2019 - 07/10/2019 Algorithm I Week 5 (Lecture)
 
