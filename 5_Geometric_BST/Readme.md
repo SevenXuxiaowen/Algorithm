@@ -74,6 +74,7 @@ Find all points in a rectangle range.
 - Check if points in node lies in the range - `R`
 - Recursively search left/bottom (if any could fall in range) - ave case: `logN`, worst case: `N^0.5`
 - Recursevely search right/top (if any could fall in range) - ave case: `logN`, worst case: `N^0.5`
+
 Running time.
 - Typical case - `R + logN`
 - Worst case - `R + N^0.5`
