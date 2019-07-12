@@ -39,3 +39,54 @@ Proportional to `NlgN + R`
 - Insert y- coordinates into BST - `NlgN`
 - Delete y- coordinates into BST - `NlgN`
 - Range search in BST - `NlgN + R`
+
+# 2d orthogonal range search (KD Tree)
+#### Definition
+Extension of ordered symbal table to 2d keys
+- Insert a 2d key
+- Delete a 2d key
+- Search for a 2d key
+- `Range search`: find all keys that lie in a 2d range
+- `Range count`: number of keys that lie n a 2d range
+## Grid algorithm
+#### Implementation
+- Divid space into M x M grid of squres, built it into a M x M 2d array.
+- Creat a linckedList of points contains in each squres
+- Range search: examine only squres that intersect 2d range query
+#### Running time of pint examine
+- Space: M^2 + N
+- Time: 1 + N/M^2 per squre examined, on average
+- Trade off: `M = N^0.51`
+#### Running time of range search 
+if `M = N^0.51`, `R` pints in the range, and evenly distribution
+- Initialize data structure - `N`
+- Insert point - `1` (because it's a linked list, like a hashtable)
+- Range search - `1` per point in range 
+- (`R` in the range, so the grid number that intersect with range is around `x = (M^2)*(R/N)`)
+- (Every grid has `y = N/M^2` pints, the total number of query is y mutiple grid number `x * y`)
+- (`x*y = (M^2)*(R/N)*(N/M^2) = R`, so `R/R=1`per point in range.
+## 2d tree construction
+Recursively partrition plane into 2 halfplanes, save to BST
+- even level : vertical line, left point goes left, right point goes right
+- odd level: horizintal line, lower point goes left, upper point goes right
+#### Range search in a 2d tree demo
+Find all points in a rectangle range.
+- Check if points in node lies in the range - `R`
+- Recursively search left/bottom (if any could fall in range) - ave case: `logN`, worst case: `N^0.5`
+- Recursevely search right/top (if any could fall in range) - ave case: `logN`, worst case: `N^0.5`
+Running time.
+- Typical case - `R + logN`
+- Worst case - `R + N^0.5`
+
+
+
+
+
+
+
+
+
+
+
+
+
