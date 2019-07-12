@@ -65,11 +65,11 @@ if `M = N^0.51`, `R` pints in the range, and evenly distribution
 - (`R` in the range, so the grid number that intersect with range is around `x = (M^2)*(R/N)`)
 - (Every grid has `y = N/M^2` pints, the total number of query is y mutiple grid number `x * y`)
 - (`x*y = (M^2)*(R/N)*(N/M^2) = R`, so `R/R=1`per point in range.
-## 2d tree construction
+## 2d tree 
 Recursively partrition plane into 2 halfplanes, save to BST
 - even level : vertical line, left point goes left, right point goes right
 - odd level: horizintal line, lower point goes left, upper point goes right
-#### Range search in a 2d tree demo
+#### Range search in a 2d tree
 Find all points in a rectangle range.
 - Check if points in node lies in the range - `R`
 - Recursively search left/bottom (if any could fall in range) - ave case: `logN`, worst case: `N^0.5`
@@ -78,16 +78,11 @@ Find all points in a rectangle range.
 Running time.
 - Typical case - `R + logN`
 - Worst case - `R + N^0.5`
+#### Nearest neighbour search in a 2d tree
+- Check distance from point to node to query point
+- Recursively search left/bottom (if could contain a closer point)
+- Recursively search right/top (if could contain a closer point)
 
-
-
-
-
-
-
-
-
-
-
-
-
+Runnint time
+- Typical case - `logN`
+- Worst case - `N`
