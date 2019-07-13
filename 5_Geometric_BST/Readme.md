@@ -86,3 +86,45 @@ Running time.
 Runnint time
 - Typical case - `logN`
 - Worst case - `N`
+
+## 1d interval search
+#### Definition
+Data structure to hold set of intervals.
+- Insert an interval (lo, hi).
+- Search for an interval (lo, hi).
+- Delete an interval (lo, hi).
+- Interval intersection query: given an interval (lo, hi), find all intervals in data structure that insects
+```java
+public class IntervalST<Key extends Comparable<Key>, Value>{
+    IntervalST();
+    void put(Key lo, Key hi, Value val)
+    void get(Key lo, Key hi)
+    void delete(Key lo, Key hi)
+    Interable<Value> intersects(Key lo, Key hi)
+}
+```
+- Nodegeneracy assumption: No 2 intervals have the same left endpoint.
+
+#### Insert
+To insert an interval(lo, hi)
+- Insert into BST, using lo as the Key
+- Update max on each node on search path
+
+#### Intersection
+To search for any interval that intersects query interval(lo, hi)
+- If interval node intersect with the query interval, return it.
+- Else if left subtree is null, go right.
+- else if max endpoint in left subtree is less than lo, go right
+- Else go left.
+
+## Rectangle intersection
+Defination: Find all intersections among a set of N orthogonal rectangles
+- Nodegeneracy assumption: all x- and y- coordinates are distinct
+#### Algorithm
+- x- coordinates of left and right endpoints defines event (only loop the x points of endpoints of rectanglar)
+- Matain a set of rectangles that intersect with the sweep line in an interval serach tree.
+- Left endpoint - interval search for y-interval of rectangle; insert y interval
+- Right endpoint - remove y-intervals
+
+#### Running time
+`NlogN + RlogN`
