@@ -75,6 +75,14 @@ public class SeperateChainingHashST<Key, Value>{
         return (key.hashCode() & 0x7fffffff)%M;
     }
     
+    public Value get(Key key){
+        int i = hash(key);
+        for(Node x = st[i]; x != null; x = x.next){
+            if(key.equals(x)) {return (Value)x.value}
+        }
+        return null;
+    }
+    
     public void put(Key key, Value val){
         int i = hash(key);
         for(Node x = st[i]; x != null; x = x.next){
@@ -93,24 +101,42 @@ Under uniform hashing assumption, prob.(the number of keys in a list) is extreme
 | insert: `lgN` | insert: `3-5` |
 | delete: `lgN` | delete: `3-5` |
 
+## Linear probing
+#### Definition
+When a key collides, find next empty slot, and put it there.
+#### Implementation
+```java
+public class LinearProbingHashST<Key, Value>{
+    private int M = 30001;
+    private Key[] keys = (Key[]) new Object[M];
+    private Values[] vals = (Value[]) new Object[M];
+    
+    private int hash(Key key){
+        return (key.hashCode() & 0x7fffffff)%M;
+    }
+    
+    private Value get(Key key){
+        for(int i = hash(Key); keys[i] != null; i = (i + 1) % M){
+            if (key.equals(keys[i])) return vals[i];
+        }
+        return null;
+    }
+    
+    private void put(Key key, Value val){
+        int i;
+        for(i = hash(key); keys[i] != null; i = (i + 1) % M){
+            if(key.equals(key[i]) break;
+        }
+        keys[i] = key;
+        vals[i] = val;
+    }
+}
+```
+#### Run time
+N/M ~ 1/2
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+| worst case | average case |
+| ------ | ------ |
+| search: `lgN` | search: `3-5` |
+| insert: `lgN` | insert: `3-5` |
+| delete: `lgN` | delete: `3-5` |
