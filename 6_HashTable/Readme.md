@@ -86,6 +86,7 @@ public class SeperateChainingHashST<Key, Value>{
 ```
 #### Running time
 Under uniform hashing assumption, prob.(the number of keys in a list) is extremely close to 1.
+
 | worst case | average case |
 | ------ | ------ |
 | search: `lgN` | search: `3-5` |
