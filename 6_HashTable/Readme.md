@@ -55,4 +55,61 @@ public final class Example implements Comparable<Example>{
 - `hash code`: An `int` between `2^-31` and `2^31`
 - `hash function`: An `int` between `0` and `M-1` (must be positive)
 
+## Seperate chaining
+#### Definition
+Two distinct keys is hashed to the same index. In practice, we deal with collision efficiently.
+#### Implementation
+```java
+public class SeperateChainingHashST<Key, Value>{
+    private int M = 97; //the number of chains M~N/5
+    private Node[] st = new Node[M]; //array of chains, each chian contains a single-direction linkedList
+    
+    private class Node{
+        private Object key;
+        private Object val;
+        private Node next;
+        ...
+    }
+    
+    private int hash(Key key){
+        return (key.hashCode() & 0x7fffffff)%M;
+    }
+    
+    public void put(Key key, Value val){
+        int i = hash(key);
+        for(Node x = st[i]; x != null; x = x.next){
+            if(key.equals(x)) {x.val = val; return}
+        }
+        st[i] = new Node(key, val, st[i]);
+    }
+}
+```
+#### Running time
+Under uniform hashing assumption, prob.(the number of keys in a list) is extremely close to 1.
+| worst case | average case |
+| ------ | ------ |
+| search: `lgN` | search: `3-5` |
+| insert: `lgN` | insert: `3-5` |
+| delete: `lgN` | delete: `3-5` |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
