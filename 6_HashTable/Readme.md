@@ -140,3 +140,7 @@ N/M ~ 1/2
 | search: `lgN` | search: `3-5` |
 | insert: `lgN` | insert: `3-5` |
 | delete: `lgN` | delete: `3-5` |
+
+## Hash function
+Red-black BST: `java.util.TreeMap``java.util.TreeSet`
+Hash Table: `java.util.HashMap``java.util.IdentityHashMap`
