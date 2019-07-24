@@ -1,4 +1,3 @@
-
 # Undirected Graph
 ## Gragh API
 2 components of a Gragh object: `edges` and `vertices`
@@ -95,6 +94,68 @@ Adjacenty lists
 - v and w connected? : `degree(v)`
 - iterate the adj(v) : `degree(v)`
 ## DFS
+#### Defination
+Goal: Systematically search through a gragh
+Algorithm (mimic maze exploration):
+```java
+DFS (to visit a vertex v){
+    Mark v as visited;
+    Recursively visit all unmarked verteces w adjacent to v.
+}
+```
+#### Typical application
+- Find all verteces connected to a given source vertex (connected group).
+- Find a path between 2 verteces (I think using BFS is better).
+
+#### Design pattern for Gragh processing
+Decouple Gragh data type from gragh processing
+- Create a Gragh object
+- Pass the Gragh to a Gragh Processing routine. (Pass a Gragh and a source vertex)
+- Query the Gragh Processing routing for information.
+```java
+public class Paths{
+    Paths(Gragh G, int s)
+    boolean hasPathTo(int v) //is there a path from s to v
+    Iterable<Integer> pathTo(int v) // all the path from s to v; null if no such path
+}
+```
+
+#### DFS
+Goal
+- find all the verteces connected to s (and a corresponding path)
+
+Algorithm 
+- Recursively visit all the verteces connected to one vertex;
+- Mark each visited vertex;
+- Return when no unvisited options
+
+#### Implementation
+```java
+public class DeepFirstSearch{
+    private boolean[] marked;
+    private int[] edgeTo; // To keep the tree of paths
+    private int s; // Source of the DFS
+    
+    public DeepFirstSearch(Gragh G, int s){
+        this.marked = new boolean[G.V()];
+        this.edgeTo = new boolean[G.V()];
+        this.s = s;
+        dfs(G, s);
+    }
+    
+    private void dfs(G, v){
+        marked[v] = true;
+        for(int w : G.adj(v)){
+            if(!marked[w]){
+                dfs(G, w);
+                edgeTo[w] = v;
+            }
+        }
+    }
+}
+```
+#### Analys
+The time is proportional to the degree of source s.
 ## BFS
 ## CC
 ## Gragh Challenges
