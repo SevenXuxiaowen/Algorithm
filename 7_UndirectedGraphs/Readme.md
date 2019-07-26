@@ -189,4 +189,59 @@ piblic class BreadthFirstPaths{
 }
 ```
 ## CC
+#### Definition
+Vertices v and w are connected if there is a path between them.
+#### Goal
+Process gragh to answer wheather v and w are connected in constant time.
+```java
+public class CC{
+    CC(Gragh G)
+    boolean connected(int v, int w) // are v and w connected
+    int count() // number of connected components
+    int id(v) // component identifier of v
+}
+```
+#### Algorithm
+- Initialize all vertices as unmarked.
+- For each unmarked v, run DFS to identify all vertices discovered as part of the same component.
+#### Implementation
+```java
+public class CC{
+    private boolean[] marked;
+    private int[] id;
+    private int count;
+    
+    public CC(Gragh G){
+        marked = new boolean[G.V()];
+        id = new int[G.V()];
+        for(int v = 0; v < G.V(); v++){
+            if(!marked[v]){
+                dfs(G, v);
+                count++;
+            }
+        }
+    }
+    
+    public int count(){
+        return count;
+    }
+    
+    public int id(int v){
+        return id[v];
+    }
+    
+    private void dfs(Gragh G, int v){
+        marked[v] = true;
+        id[v] = count;
+        for(int w : G.ajd(v)){
+            if(!marked[w]){
+                dfs(G, w);
+            }
+        }
+    }
+}
+```
+
+
+
 ## Gragh Challenges
