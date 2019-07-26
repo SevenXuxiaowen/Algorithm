@@ -157,5 +157,36 @@ public class DeepFirstSearch{
 #### Analys
 The time is proportional to the degree of source s.
 ## BFS
+#### Defination
+Repeat untill queue is empty:
+- Remove vertex v from queue
+- Add to queue all unmarked verteces ajacent to v and mark them.
+#### Application
+Find path from s to v using fewest number of edges.
+#### Running time
+propotional to V+E
+#### Implementation
+```java
+piblic class BreadthFirstPaths{
+    private boolean[] marked;
+    private int[] edgeTo;
+    
+    private void bfs(Gragh G, int s){
+        Queue<Integer> q = new Queue<Integer>();
+        q.enqueue(s);
+        marked[s] = true;
+        while(!q.isEmpty()){
+            int v = q.dequeue();
+            for(int w : G.adj(v)){
+                if(!marked[w]){
+                    q.enqueue(w);
+                    marked[w] = true;
+                    edgeTo[w] = v;
+                }
+            }
+        }
+    }
+}
+```
 ## CC
 ## Gragh Challenges
